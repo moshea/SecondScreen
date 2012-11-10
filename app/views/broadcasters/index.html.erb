@@ -1,0 +1,22 @@
+<h1>Listing broadcasters</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Logo url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @broadcasters.each do |broadcaster| %>
+  <tr>
+    <td><%= link_to broadcaster.name, broadcaster %></td>
+    <td><%= link_to 'New Channel', new_channel_path(broadcaster) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Broadcaster', new_broadcaster_path %>

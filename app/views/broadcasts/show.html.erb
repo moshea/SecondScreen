@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Channel:</b>
+  <%= @broadcast.channel_id %>
+</p>
+
+<p>
+  <b>Broadcaster broadcast:</b>
+  <%= @broadcast.broadcaster_broadcast_id %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @broadcast.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @broadcast.end %>
+</p>
+
+<p>
+  <b>Broadcaster program uuid:</b>
+  <%= @broadcast.broadcaster_program_uuid %>
+</p>
+
+<p>
+  <b>Synopsis:</b>
+  <%= @broadcast.synopsis %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @broadcast.title %>
+</p>
+
+<p>
+  <b>Subtitle:</b>
+  <%= @broadcast.subtitle %>
+</p>
+
+
+<%= link_to 'Edit', edit_broadcast_path(@broadcast) %> |
+<%= link_to 'Back', broadcasts_path %>

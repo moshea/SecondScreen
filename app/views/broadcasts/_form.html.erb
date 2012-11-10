@@ -1,0 +1,49 @@
+<%= form_for(@broadcast) do |f| %>
+  <% if @broadcast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@broadcast.errors.count, "error") %> prohibited this broadcast from being saved:</h2>
+
+      <ul>
+      <% @broadcast.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :channel_id %><br />
+    <%= f.number_field :channel_id %>
+  </div>
+  <div class="field">
+    <%= f.label :broadcaster_broadcast_id %><br />
+    <%= f.text_field :broadcaster_broadcast_id %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.date_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.date_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :broadcaster_program_uuid %><br />
+    <%= f.text_field :broadcaster_program_uuid %>
+  </div>
+  <div class="field">
+    <%= f.label :synopsis %><br />
+    <%= f.text_area :synopsis %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br />
+    <%= f.text_field :subtitle %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing channels</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Logo url</th>
+    <th>Ingestion url</th>
+    <th>Ingestion module</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @channels.each do |channel| %>
+  <tr>
+    <td><%= channel.name %></td>
+    <td><%= channel.logo_url %></td>
+    <td><%= channel.ingestion_url %></td>
+    <td><%= channel.ingestion_module %></td>
+    <td><%= link_to 'Show', channel %></td>
+    <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
+    <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Channel', new_channel_path %>

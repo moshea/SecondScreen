@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  channel_id: 1
+  broadcaster_broadcast_id: MyString
+  start: 2012-11-10
+  end: 2012-11-10
+  broadcaster_program_uuid: MyString
+  synopsis: MyText
+  title: MyString
+  subtitle: MyString
+
+two:
+  channel_id: 1
+  broadcaster_broadcast_id: MyString
+  start: 2012-11-10
+  end: 2012-11-10
+  broadcaster_program_uuid: MyString
+  synopsis: MyText
+  title: MyString
+  subtitle: MyString

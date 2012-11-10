@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @broadcaster.name %>
+</p>
+
+<p>
+  <b>Logo url:</b>
+  <%= @broadcaster.logo_url %>
+</p>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Logo url</th>
+    <th>Ingestion url</th>
+    <th>Ingestion module</th>
+    <th></th>
+  </tr>
+<% @channels.each do |channel| %>
+	<tr> 
+		<td> <%= link_to channel.name, channel %> </td>
+		<td> <%= link_to channel.logo_url, channel.logo_url %></td>
+		<td> <%= channel.ingestion_url %></td>
+		<td> <%= channel.ingestion_module %></td>
+		<td> <%= form_tag(:controller => :channels, :action => :ingest, :method => :post) do |f| %>
+			  	<div class="field">
+			    	<%= label_tag :date %>
+			    	<%= text_field_tag :date %>
+  				</div>
+  				<div class="actions">
+    				<%= submit_tag %>
+  				</div>
+  			<% end %>
+		</td>
+		<td> <%= link_to 'Edit', edit_channel_path(channel)%></td>
+	</tr>
+<% end %>
+</table>
+
+<p>
+	<%= link_to 'New Channel', new_broadcaster_channel_path(@broadcaster) %>
+	<%= link_to 'Edit Broadcaster', edit_broadcaster_path(@broadcaster) %> |
+	<%= link_to 'Back', broadcasters_path %>
+</p>

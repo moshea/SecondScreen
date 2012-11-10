@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @channel.name %>
+</p>
+
+<p>
+  <b>Logo url:</b>
+  <%= @channel.logo_url %>
+</p>
+
+<p>
+  <b>Ingestion url:</b>
+  <%= @channel.ingestion_url %>
+</p>
+
+<p>
+  <b>Ingestion module:</b>
+  <%= @channel.ingestion_module %>
+</p>
+
+
+<%= link_to 'Edit', edit_channel_path(@channel) %> |
+<%= link_to 'Back', channels_path %>
