@@ -5,5 +5,15 @@ class Broadcast < ActiveRecord::Base
   after_initialize do
     self.uuid ||= SecureRandom.uuid
   end
+  
+  def as_json(options={})
+    {:channel_id => channel_id,
+      :start => start,
+      :end => self.end,
+      :title => title,
+      :subtitle => subtitle,
+      :synopsis => synopsis,
+      :uuid => uuid}
+  end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110224545) do
+ActiveRecord::Schema.define(:version => 20121117212421) do
 
   create_table "broadcasters", :force => true do |t|
     t.string   "name"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20121110224545) do
   create_table "broadcasts", :force => true do |t|
     t.integer  "channel_id"
     t.string   "broadcaster_broadcast_id"
-    t.date     "start"
-    t.date     "end"
+    t.datetime "start"
+    t.datetime "end"
     t.string   "broadcaster_program_id"
     t.text     "synopsis"
     t.string   "title"

@@ -7,4 +7,11 @@ class Channel < ActiveRecord::Base
     logger.debug ingestion_module + ".perform_async(#{id}, '#{date}')"
     eval(ingestion_module + ".perform_async(#{id}, '#{date}')")
   end
+  
+  def as_json(options={})
+    { :id => id,
+      :broadcaster_id => broadcaster_id, 
+      :logo_url => logo_url,
+      :name => name}
+  end
 end

@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
-
+gem 'jquery-rails'
+gem 'redis'
+gem 'sidekiq'
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,11 +19,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'redis'
-gem 'sidekiq'
-gem 'nokogiri'
-
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'mocha'
+  gem 'ruby-debug-ide'
+  gem 'debugger'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -37,6 +37,3 @@ gem 'nokogiri'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

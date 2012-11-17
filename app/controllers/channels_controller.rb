@@ -2,7 +2,12 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.json
   def index
-    @channels = Channel.all
+    if params[:broadcaster_id]
+      @channels = Channel.where(:broadcaster_id => params[:broadcaster_id])
+    else
+      @channels = Channel.all
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

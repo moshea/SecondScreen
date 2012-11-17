@@ -10,6 +10,10 @@ SecondScreen::Application.routes.draw do
   resources :broadcasters do
     resources :channels
   end
+  
+  resources :channels do
+    resources :broadcasts
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
