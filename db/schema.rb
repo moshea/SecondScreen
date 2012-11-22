@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118114426) do
+ActiveRecord::Schema.define(:version => 20121122222834) do
 
   create_table "broadcasters", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(:version => 20121118114426) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "uuid"
+    t.string   "device_id"
+    t.string   "os_version"
+    t.integer  "api_level"
+    t.string   "make"
+    t.string   "model"
   end
 
 end
