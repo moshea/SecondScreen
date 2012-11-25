@@ -1,7 +1,11 @@
 SecondScreen::Application.routes.draw do
   resources :users
 
-  resources :broadcasts
+  resources :broadcasts do
+    collection do
+      get 'now'
+    end
+  end
 
   resources :channels do
     member do

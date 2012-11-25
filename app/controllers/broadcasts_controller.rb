@@ -84,4 +84,13 @@ class BroadcastsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def now
+    @broadcasts = Broadcast.where("start <= ? and end >= ?", Time.now, Time.now )
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @broadcasts}
+    end
+  end
 end

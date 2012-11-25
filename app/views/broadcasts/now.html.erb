@@ -1,4 +1,4 @@
-<h1>Listing broadcasts</h1>
+<h1>Listing broadcasts on now</h1>
 
 <table>
   <tr>
@@ -10,9 +10,6 @@
     <th>Synopsis</th>
     <th>Title</th>
     <th>Subtitle</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @broadcasts.each do |broadcast| %>
@@ -23,15 +20,10 @@
     <td><%= broadcast.end %></td>
     <td><%= broadcast.broadcaster_program_id %></td>
     <td><%= broadcast.synopsis %></td>
-    <td><%= broadcast.title %></td>
+    <td><%= link_to broadcast.title, broadcast %></td>
     <td><%= broadcast.subtitle %></td>
-    <td><%= link_to 'Show', broadcast %></td>
-    <td><%= link_to 'Edit', edit_broadcast_path(broadcast) %></td>
-    <td><%= link_to 'Destroy', broadcast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Broadcast', new_broadcast_path %>
