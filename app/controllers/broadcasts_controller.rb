@@ -2,12 +2,8 @@ class BroadcastsController < ApplicationController
   # GET /broadcasts
   # GET /broadcasts.json
   def index
-    if params[:channel_id]
-      @broadcasts = Broadcast.where(:channel_id => params[:channel_id])
-    else
-      @broadcasts = Broadcast.all      
-    end
-
+    @broadcasts = Broadcast.today(params[:channel_id])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @broadcasts }
@@ -86,7 +82,7 @@ class BroadcastsController < ApplicationController
   end
   
   def now
-    @broadcasts = Broadcast.where("start <= ? and end >= ?", Time.now, Time.now )
+    @broadcasts = Broadcast.now
     
     respond_to do |format|
       format.html

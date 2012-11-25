@@ -46,7 +46,9 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.json
   def create
+    @broadcaster = Broadcaster.find(params[:broadcaster_id])
     @channel = Channel.new(params[:channel])
+    @channel.broadcaster_id = @broadcaster.id
 
     respond_to do |format|
       if @channel.save

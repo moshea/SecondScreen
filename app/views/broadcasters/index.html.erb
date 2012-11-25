@@ -12,7 +12,7 @@
 <% @broadcasters.each do |broadcaster| %>
   <tr>
     <td><%= link_to broadcaster.name, broadcaster %></td>
-    <td><%= link_to 'New Channel', new_channel_path(broadcaster) %></td>
+    <td><%= link_to 'New Channel', new_broadcaster_channel_path(broadcaster) %></td>
   </tr>
 <% end %>
 </table>
