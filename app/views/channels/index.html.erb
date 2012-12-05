@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Logo url</th>
+    <th>Logo</th>
     <th>Ingestion url</th>
     <th>Ingestion module</th>
     <th></th>
@@ -14,7 +14,7 @@
 <% @channels.each do |channel| %>
   <tr>
     <td><%= channel.name %></td>
-    <td><%= channel.logo_url %></td>
+    <td><%= image_tag channel.logo.url %></td>
     <td><%= channel.ingestion_url %></td>
     <td><%= channel.ingestion_module %></td>
     <td><%= link_to 'Show', channel %></td>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Channel', new_channel_path %>
+<%= link_to 'New Channel', new_channel_path %> <%= link_to 'Broadcasters', broadcasters_path %>

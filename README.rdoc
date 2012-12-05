@@ -1,4 +1,27 @@
-SideKiq is used to kick off backgroud tasks, like ingesting schedules.
-Make sure to start up sidekiq before trying to run any of these tasks
+Imagemagick
 
-bundle exec sidekiq
+Imagemagick is used for resizing images, logos etc.
+Need to install imagemagick
+<pre>
+	apt-get install imagemagick libmagickwand-dev
+</pre>
+
+Application images are stored in 
+<pre>
+	APP_LIB_DIR/images
+</pre>
+
+which is defined in the environment.rb file. Check the different environment files.
+secondscreen folder for development has a trailing _dev, test has an _test
+<pre>
+	mkdir -p /var/lib/secondscreen/images
+	chown -R user:user /var/lib/secondscreen*
+</pre>
+
+Sidekiq:
+
+SideKiq is used to kick off background tasks, like ingesting schedules.
+Make sure to start up sidekiq before trying to run any of these tasks
+<pre>
+	bundle exec sidekiq
+</pre>

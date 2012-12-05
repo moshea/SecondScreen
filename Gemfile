@@ -6,6 +6,8 @@ gem 'jquery-rails'
 gem 'redis'
 gem 'sidekiq'
 gem 'nokogiri'
+gem 'rmagick'
+gem 'paperclip'
 
 # Gems used only for assets and not required
 # in production environments by default.

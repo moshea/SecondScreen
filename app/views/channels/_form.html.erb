@@ -1,4 +1,4 @@
-<%= form_for([@broadcaster, @channel]) do |f| %>
+<%= form_for([@broadcaster, @channel], :html => {:multipart => true}) do |f| %>
   <% if @channel.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@channel.errors.count, "error") %> prohibited this channel from being saved:</h2>
@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :logo_url %><br />
-    <%= f.text_field :logo_url %>
+    <%= f.label :logo %><br />
+    <%= f.file_field :logo %>
   </div>
   <div class="field">
     <%= f.label :ingestion_url %><br />

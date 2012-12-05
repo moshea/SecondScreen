@@ -1,5 +1,6 @@
-class Channel < ActiveRecord::Base
-  attr_accessible :ingestion_module, :ingestion_url, :logo_url, :name
+class Channel < ActiveRecord::Base  
+  attr_accessible :ingestion_module, :ingestion_url, :logo_url, :name, :logo
+  has_attached_file :logo, :styles => {:medium => "20x20>", :large => "40x40>", :hd => "80x80>", :xhd => "120x120>"} 
   
   belongs_to :broadcaster
   
@@ -11,7 +12,7 @@ class Channel < ActiveRecord::Base
   def as_json(options={})
     { :id => id,
       :broadcaster_id => broadcaster_id, 
-      :logo_url => logo_url,
-      :name => name}
+      :logoUrl => IMAGE_HOST + logo.url(:large),
+      :name => name }
   end
 end
