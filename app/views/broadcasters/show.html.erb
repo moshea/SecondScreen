@@ -22,10 +22,10 @@
 <% @channels.each do |channel| %>
 	<tr> 
 		<td> <%= link_to channel.name, channel %> </td>
-		<td> <%= link_to channel.logo_url, channel.logo_url %></td>
+		<td> <%= image_tag channel.logo.url(:large) %></td>
 		<td> <%= channel.ingestion_url %></td>
 		<td> <%= channel.ingestion_module %></td>
-		<td> <%= form_tag(:controller => :channels, :action => :ingest, :method => :post) do |f| %>
+		<td> <%= form_tag(:controller => :channels, :id => channel.id, :action => :ingest, :method => :post) do |f| %>
 			  	<div class="field">
 			    	<%= label_tag :date %>
 			    	<%= text_field_tag :date %>

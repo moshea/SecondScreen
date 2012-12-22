@@ -1,6 +1,6 @@
 class Channel < ActiveRecord::Base  
   attr_accessible :ingestion_module, :ingestion_url, :logo_url, :name, :logo
-  has_attached_file :logo, :styles => {:medium => "20x20>", :large => "40x40>", :hd => "80x80>", :xhd => "120x120>"} 
+  has_attached_file :logo, :styles => {:medium => "50x50>", :large => "100x100>", :hd => "80x80>", :xhd => "120x120>"} 
   
   belongs_to :broadcaster
   

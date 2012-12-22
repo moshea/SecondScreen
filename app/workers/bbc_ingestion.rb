@@ -1,5 +1,53 @@
 require 'logger'
 
+##
+# BBCIngestion can handle ingestion from all the BBC channels
+# The schedule is requested over xml, and parsed into shows.
+# The ingestor works from midnight to midnight, ignoring any extra
+# timing that is given
+# need to exectute : bundle exec sidekiq
+# before running the ingestion process
+# A typical broadcast comes in the format:
+#
+# <broadcast is_repeat="0" is_blanked="0">
+#   <pid>p010kmt7</pid>
+#   <start>2012-11-11T02:30:00Z</start>
+#   <end>2012-11-11T02:35:00Z</end>
+#   <duration>300</duration>
+#   <programme type="episode">
+#     <pid>b01nr17k</pid>
+#     <position/>
+#     <title>11/11/2012</title>
+#     <short_synopsis>Detailed weather forecast.</short_synopsis>
+#     <media_type>audio_video</media_type>
+#     <duration>300</duration>
+#     <display_titles>
+#       <title>Weatherview</title>
+#       <subtitle>11/11/2012</subtitle>
+#     </display_titles>
+#     <first_broadcast_date>2012-11-11T02:30:00Z</first_broadcast_date>
+#     <ownership>
+#       <service type="" id="bbc_webonly" key="">
+#         <title>BBC</title>
+#       </service>
+#     </ownership>
+#     <programme type="brand">
+#       <pid>b007yy70</pid>
+#       <title>Weatherview</title>
+#       <position/>
+#       <expected_child_count/>
+#       <first_broadcast_date>2007-09-02T01:50:00+01:00</first_broadcast_date>
+#       <ownership>
+#         <service type="" id="bbc_webonly" key="">
+#          <title>BBC</title>
+#        </service>
+#       </ownership>
+#     </programme>
+#   <is_available_mediaset_pc_sd>0</is_available_mediaset_pc_sd>
+#   <is_legacy_media>0</is_legacy_media>
+#   </programme>
+# </broadcast>
+
 class BBCIngestion
   include Sidekiq::Worker
   
@@ -8,6 +56,10 @@ class BBCIngestion
   ONE_DAY = 1
   logger = Logger.new(STDOUT)
   
+  ##
+  # perform is a method that is overwritten from Sidekiq::Worker
+  # this method is called to kick off the process in the different thread
+  # which is useful, so we can let the user do other things.
   def perform(channel_id, date)
     @channel = Channel.find(channel_id)
     logger.info @channel.class
@@ -64,42 +116,3 @@ class BBCIngestion
   end 
   
 end
-
-        # <broadcast is_repeat="0" is_blanked="0">
-        #   <pid>p010kmt7</pid>
-        #   <start>2012-11-11T02:30:00Z</start>
-        #   <end>2012-11-11T02:35:00Z</end>
-        #   <duration>300</duration>
-        #   <programme type="episode">
-        #     <pid>b01nr17k</pid>
-        #     <position/>
-        #     <title>11/11/2012</title>
-        #     <short_synopsis>Detailed weather forecast.</short_synopsis>
-        #     <media_type>audio_video</media_type>
-        #     <duration>300</duration>
-        #     <display_titles>
-        #       <title>Weatherview</title>
-        #       <subtitle>11/11/2012</subtitle>
-        #     </display_titles>
-        #     <first_broadcast_date>2012-11-11T02:30:00Z</first_broadcast_date>
-        #     <ownership>
-        #       <service type="" id="bbc_webonly" key="">
-        #         <title>BBC</title>
-        #       </service>
-        #     </ownership>
-        #     <programme type="brand">
-        #       <pid>b007yy70</pid>
-        #       <title>Weatherview</title>
-        #       <position/>
-        #       <expected_child_count/>
-        #       <first_broadcast_date>2007-09-02T01:50:00+01:00</first_broadcast_date>
-        #       <ownership>
-        #         <service type="" id="bbc_webonly" key="">
-        #          <title>BBC</title>
-        #        </service>
-        #       </ownership>
-        #     </programme>
-        #   <is_available_mediaset_pc_sd>0</is_available_mediaset_pc_sd>
-        #   <is_legacy_media>0</is_legacy_media>
-        #   </programme>
-        # </broadcast>

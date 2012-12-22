@@ -1,4 +1,6 @@
 SecondScreen::Application.routes.draw do
+  resources :statuses
+
   resources :users
 
   resources :broadcasts do

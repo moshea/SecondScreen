@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202195300) do
+ActiveRecord::Schema.define(:version => 20121222182023) do
 
   create_table "broadcasters", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20121202195300) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "search_limiters", :force => true do |t|
+    t.string   "broadcast_uuid"
+    t.datetime "last_external_request"
+    t.datetime "last_internal_request"
+    t.integer  "search_request_count"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "broadcast_uuid"
+    t.string   "text"
+    t.string   "user"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|

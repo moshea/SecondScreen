@@ -6,8 +6,10 @@ gem 'jquery-rails'
 gem 'redis'
 gem 'sidekiq'
 gem 'nokogiri'
-gem 'rmagick'
-gem 'paperclip'
+gem 'rmagick'     # allowing resizing of images
+gem 'paperclip'   # allowing images to be uploaded
+gem 'tweetstream' # for all twitter streaming apis
+gem 'twitter'     # for twitter REST apis
 
 # Gems used only for assets and not required
 # in production environments by default.

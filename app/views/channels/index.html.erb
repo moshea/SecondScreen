@@ -14,7 +14,7 @@
 <% @channels.each do |channel| %>
   <tr>
     <td><%= channel.name %></td>
-    <td><%= image_tag channel.logo.url %></td>
+    <td><%= image_tag channel.logo.url(:large) %></td>
     <td><%= channel.ingestion_url %></td>
     <td><%= channel.ingestion_module %></td>
     <td><%= link_to 'Show', channel %></td>

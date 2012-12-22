@@ -14,4 +14,31 @@ FactoryGirl.define do
     make "Samsung"
     model "Galaxy II"
   end
+  
+  factory :broadcast do
+    sequence :uuid do |n|
+      SecureRandom.uuid
+    end 
+  end
+  
+  ##
+  # this class doesn't really exist. It is there to replicate results from
+  # a twitter search
+  
+  class TwitterStatus
+    attr_accessor :text, :from_user
+  end
+
+  ##
+  # this factory is for mocking out status that is returned 
+  # from Twitter search result
+  
+  factory :twitter_status do
+    sequence :text do |n|
+      "status text #{n}"
+    end
+    sequence :from_user do |n|
+      "user_#{n}"
+    end
+  end
 end

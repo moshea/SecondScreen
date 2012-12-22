@@ -5,13 +5,17 @@ class Broadcast < ActiveRecord::Base
   SECONDS_BEFORE_FILTER = 60*60*12
   SECONDS_AFTER_FILTER = 60*60*12
   
+  ##
   # each broadcast needs a uuid for referencing
+  
   after_initialize do
     self.uuid ||= SecureRandom.uuid
   end
   
+  ##
   # fetch all the shows which are running today.
   # today is defined by before and after filters
+  
   def self.today(channel_id=nil)
     if channel_id
     self.where(:channel_id => channel_id).
@@ -25,9 +29,20 @@ class Broadcast < ActiveRecord::Base
     end
   end
   
+  ##
   # fetch a list of shows across all channels which are on now
+  
   def self.now
     self.where("start <= ? and end >= ?", Time.now, Time.now )
+  end
+  
+  ##
+  # search_terms gathers all the search terms that can be used for
+  # a show, and returns them as a search string which can be used
+  # as part of a twitter search, or any other search
+  
+  def search_terms
+    return "topgear"
   end
   
   def as_json(options={})

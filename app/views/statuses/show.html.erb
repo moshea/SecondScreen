@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Broadcast uuid:</b>
+  <%= @status.broadcast_uuid %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @status.text %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @status.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>
