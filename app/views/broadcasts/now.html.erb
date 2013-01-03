@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Channel</th>
+    <th>uuid</th>
     <th>Broadcaster broadcast</th>
     <th>Start</th>
     <th>End</th>
@@ -15,6 +16,7 @@
 <% @broadcasts.each do |broadcast| %>
   <tr>
     <td><%= broadcast.channel_id %></td>
+    <td><%= broadcast.uuid %></td>
     <td><%= broadcast.broadcaster_broadcast_id %></td>
     <td><%= broadcast.start %></td>
     <td><%= broadcast.end %></td>

@@ -8,7 +8,7 @@ class Status < ActiveRecord::Base
   # from the local DB
   
   def self.latest(broadcast_uuid)
-    statuses = TwitterSearch.tweets(broadcast_uuid)
+    statuses = TwitterLimiter.tweets(broadcast_uuid)
     return statuses
   end
 end

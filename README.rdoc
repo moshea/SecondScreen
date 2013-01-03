@@ -21,6 +21,12 @@ secondscreen folder for development has a trailing _dev, test has an _test
 Sidekiq:
 
 SideKiq is used to kick off background tasks, like ingesting schedules.
+It relies on the redis-server to work. So need to install that first.
+On mac, to start redis
+<pre>
+	redis-server /opt/local/etc/redis.conf
+</pre>
+
 Make sure to start up sidekiq before trying to run any of these tasks
 <pre>
 	bundle exec sidekiq

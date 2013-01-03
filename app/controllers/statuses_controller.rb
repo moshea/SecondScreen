@@ -2,7 +2,8 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.latest
+    @broadcast = Broadcast.find_by_uuid(params[:broadcast_id])
+    @statuses = Status.latest(@broadcast.uuid)
 
     respond_to do |format|
       format.html # index.html.erb

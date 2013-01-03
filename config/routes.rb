@@ -7,6 +7,7 @@ SecondScreen::Application.routes.draw do
     collection do
       get 'now'
     end
+    resources :statuses
   end
 
   resources :channels do

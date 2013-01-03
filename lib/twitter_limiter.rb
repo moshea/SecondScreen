@@ -24,7 +24,7 @@ module TwitterLimiter
   
   def TwitterLimiter.tweets(broadcast_uuid, rate_limit=30)
     statuses = nil
-    broadcast = Broadcast.find(broadcast_uuid)
+    broadcast = Broadcast.find_by_uuid(broadcast_uuid)
     last_search = SearchLimiter.where("broadcast_uuid = ?", broadcast.uuid).last
     
     Logger.debug("last search for broadcast: #{broadcast.uuid} - #{last_search.inspect}")

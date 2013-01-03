@@ -89,4 +89,5 @@ class BroadcastsController < ApplicationController
       format.json { render json: @broadcasts}
     end
   end
+
 end

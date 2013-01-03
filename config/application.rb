@@ -9,6 +9,13 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+Twitter.configure do |config|
+  config.consumer_key = "ZqfaqblLnC5iqKxfQI5w"
+  config.consumer_secret = "Rw7ZDpl6a0TR8k5FCdxcrHobUcMTuIbI10PPZmrKqI"
+  config.oauth_token = "1013968453-CKCU9mGRmW2seaGNmNxn9yqzc5Xm5W2LpI87LBQ"
+  config.oauth_token_secret = "yipNe3OInLTKc8JhkETT2aH8iviIYZoeCciFhho2AY"
+end
+
 module SecondScreen
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
