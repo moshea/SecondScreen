@@ -59,7 +59,7 @@ class Broadcast < ActiveRecord::Base
   end
   
   def as_json(options={})
-    {:channel_id => channel_id,
+    { :channel_id => channel_id,
       :start => start,
       :end => self.end,
       :title => title,

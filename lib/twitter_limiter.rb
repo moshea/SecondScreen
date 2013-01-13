@@ -23,6 +23,7 @@ module TwitterLimiter
   # then we will get data direct from the local database
   
   def TwitterLimiter.tweets(broadcast_uuid, rate_limit=30)
+      
     statuses = nil
     broadcast = Broadcast.find_by_uuid(broadcast_uuid)
     last_search = SearchLimiter.where("broadcast_uuid = ?", broadcast.uuid).last
@@ -54,7 +55,8 @@ module TwitterLimiter
     else
       Logger.debug("rate limit is over - fetch more results")
       terms = broadcast.search_terms
-      Twitter.search(terms).results.collect do |status|
+      Logger.debug("twitter search terms are: #{terms}")
+      Twitter.search(terms.to_s).results.collect do |status|
         Status.create(:broadcast_uuid => broadcast.uuid,
                         :text           => status.text,
                         :user           => status.from_user )
@@ -66,6 +68,6 @@ module TwitterLimiter
     last_search.search_request_count += 1
     last_search.save
     return Status.where("broadcast_uuid = ?", broadcast.uuid).last(100)
-  end
+   end
   
 end

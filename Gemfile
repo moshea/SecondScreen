@@ -8,7 +8,7 @@ gem 'sidekiq'
 gem 'nokogiri'
 gem 'rmagick'     # allowing resizing of images
 gem 'paperclip'   # allowing images to be uploaded
-gem 'tweetstream' # for all twitter streaming apis
+#gem 'tweetstream' # for all twitter streaming apis
 gem 'twitter'     # for twitter REST apis
 gem 'acts-as-taggable-on', '~> 2.3.1' # handles all tagging 
 

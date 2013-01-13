@@ -1,19 +1,11 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
-
-Twitter.configure do |config|
-  config.consumer_key = "ZqfaqblLnC5iqKxfQI5w"
-  config.consumer_secret = "Rw7ZDpl6a0TR8k5FCdxcrHobUcMTuIbI10PPZmrKqI"
-  config.oauth_token = "1013968453-CKCU9mGRmW2seaGNmNxn9yqzc5Xm5W2LpI87LBQ"
-  config.oauth_token_secret = "yipNe3OInLTKc8JhkETT2aH8iviIYZoeCciFhho2AY"
+# If you want your assets lazily compiled in production, use this line
+# Bundler.require(:default, :assets, Rails.env)
 end
 
 module SecondScreen
@@ -65,7 +57,12 @@ module SecondScreen
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
-    
+
+        Twitter.configure do |config|
+          config.consumer_key = "isuJWLk4ONhGZdpp5BciA"
+          config.consumer_secret = "63W91GOPCkoJetwIDW7Hp4ohdjADuiuWSMqtGAZEgQ"
+          config.oauth_token = "1013968453-CKCU9mGRmW2seaGNmNxn9yqzc5Xm5W2LpI87LBQ"
+          config.oauth_token_secret = "yipNe3OInLTKc8JhkETT2aH8iviIYZoeCciFhho2AY"
+        end
   end
 end
