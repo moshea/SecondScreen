@@ -6,10 +6,11 @@
     <th>Broadcaster broadcast</th>
     <th>Start</th>
     <th>End</th>
-    <th>Broadcaster program uuid</th>
+    <th>Broadcaster program id</th>
     <th>Synopsis</th>
     <th>Title</th>
     <th>Subtitle</th>
+    <th>Broadcast tags</th>
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= broadcast.synopsis %></td>
     <td><%= broadcast.title %></td>
     <td><%= broadcast.subtitle %></td>
+    <td><%= broadcast.broadcast_list %></td>
     <td><%= link_to 'Show', broadcast %></td>
     <td><%= link_to 'Edit', edit_broadcast_path(broadcast) %></td>
     <td><%= link_to 'Destroy', broadcast, method: :delete, data: { confirm: 'Are you sure?' } %></td>

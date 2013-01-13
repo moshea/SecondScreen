@@ -40,6 +40,11 @@
   <%= @broadcast.subtitle %>
 </p>
 
+<p>
+  <b>Broadcast tags:</b>
+  <%= @broadcast.broadcast_list %>
+</p>
+
 
 <%= link_to 'Edit', edit_broadcast_path(@broadcast) %> |
 <%= link_to 'Back', broadcasts_path %>

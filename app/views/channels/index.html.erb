@@ -17,6 +17,17 @@
     <td><%= image_tag channel.logo.url(:large) %></td>
     <td><%= channel.ingestion_url %></td>
     <td><%= channel.ingestion_module %></td>
+		<td> <%= form_tag(:controller => :channels, :id => channel.id, :action => :ingest, :method => :post) do |f| %>
+		  	<div class="field">
+		    	<%= label_tag :date %>
+		    	<%= text_field_tag :date %>
+			</div>
+			<div class="actions">
+				<%= submit_tag %>
+			</div>
+		<% end %>
+	</td>
+	<td><%= link_to 'Broadcasts', channel_broadcasts_path(channel)%></td>
     <td><%= link_to 'Show', channel %></td>
     <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
     <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

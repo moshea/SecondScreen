@@ -1,6 +1,12 @@
 class Broadcast < ActiveRecord::Base
-  attr_accessible :broadcaster_broadcast_id, :broadcaster_program_id, :channel_id, :end, :start, :subtitle, :synopsis, :title, :uuid
+  attr_accessible :broadcaster_broadcast_id, :broadcaster_program_id, 
+                  :channel_id, :end, :start, :subtitle, :synopsis, :title, :uuid,
+                  :broadcast_list
+                  
   attr_reader :SECONDS_BEFORE_FILTER, :SECONDS_AFTER_FILTER
+  
+  acts_as_taggable
+  acts_as_taggable_on :broadcasts
   
   SECONDS_BEFORE_FILTER = 60*60*12
   SECONDS_AFTER_FILTER = 60*60*12
@@ -42,7 +48,14 @@ class Broadcast < ActiveRecord::Base
   # as part of a twitter search, or any other search
   
   def search_terms
-    return "topgear"
+    return self.broadcast_list
+  end
+  
+  ##
+  # @param terms = {:series=>"", :episode=>"", :broadcast=>""}
+  def search_terms=(terms)
+    self.broadcast_list = terms[:broadcast]
+    self.save
   end
   
   def as_json(options={})
